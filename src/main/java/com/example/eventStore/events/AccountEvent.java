@@ -3,8 +3,8 @@ package com.example.eventStore.events;
 import java.time.Instant;
 
 public abstract class AccountEvent {
-    String accountId;
-    Instant occurredAt;
+    private String accountId;
+    private Instant occurredAt;
 
     public AccountEvent(String accountId) {
         this.accountId = accountId;

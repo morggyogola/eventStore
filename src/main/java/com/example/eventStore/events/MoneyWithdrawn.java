@@ -3,7 +3,7 @@ package com.example.eventStore.events;
 import java.math.BigDecimal;
 
 public class MoneyWithdrawn extends AccountEvent{
-    BigDecimal amount;
+   private  BigDecimal amount;
 
     public MoneyWithdrawn(BigDecimal amount,String accountId){
         super(accountId);

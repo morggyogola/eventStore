@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class MoneyDeposited extends AccountEvent{
 
-    BigDecimal amount;
+    private BigDecimal amount;
 
     public MoneyDeposited(BigDecimal amount,String accountId) {
         super(accountId);
