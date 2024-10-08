@@ -3,21 +3,20 @@ package com.example.eventStore.events;
 import java.time.Instant;
 
 public abstract class AccountEvent {
-    String accountid;
+    String accountId;
     Instant occurredAt;
 
-    public AccountEvent(String accountid, Instant occurredAt) {
-        this.accountid = accountid;
-        this.occurredAt = occurredAt;
+    public AccountEvent(String accountId) {
+        this.accountId = accountId;
+        this.occurredAt = Instant.now();
     }
 
-
-    public String getAccountid() {
-        return accountid;
+    public String getAccountId() {
+        return accountId;
     }
 
-    public void setAccountid(String accountid) {
-        this.accountid = accountid;
+    public void setAccountId(String accountId) {
+        this.accountId = accountId;
     }
 
     public Instant getOccurredAt() {
