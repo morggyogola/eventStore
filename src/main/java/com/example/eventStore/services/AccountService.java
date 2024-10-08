@@ -4,10 +4,12 @@ import com.eventstore.dbclient.AppendToStreamOptions;
 import com.eventstore.dbclient.EventData;
 import com.eventstore.dbclient.EventStoreDBClient;
 import com.example.eventStore.events.AccountEvent;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.example.eventStore.events.MoneyDeposited;
+import com.example.eventStore.events.MoneyWithdrawn;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
@@ -18,6 +20,16 @@ public class AccountService {
     public AccountService(EventStoreDBClient eventStoreDBClient, ObjectMapper objectMapper) {
         this.eventStoreDBClient = eventStoreDBClient;
         this.objectMapper = objectMapper;
+    }
+
+    public  void deposit(String accountId, BigDecimal amount) throws Exception{
+        AccountEvent event = new MoneyDeposited(amount,accountId);
+        saveEvent(accountId,event);
+    }
+
+    public  void withdraw(String accountId, BigDecimal amount) throws Exception{
+        AccountEvent event = new MoneyWithdrawn(amount,accountId);
+        saveEvent(accountId, event);
     }
 
     private void saveEvent(String accountId, AccountEvent event) throws Exception {
